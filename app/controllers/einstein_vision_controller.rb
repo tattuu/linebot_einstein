@@ -24,7 +24,7 @@ class EinsteinVisionController < ApplicationController
 
         # Sign the JWT payload
         assertion = JWT.encode payload, rsa_private, 'RS256'
-#        @msg4 = assertion
+        @msg4 = assertion
 =begin
         # Call the OAuth endpoint to generate a token
         response = RestClient.post(ps_endpoint + 'v2/oauth2/token', {

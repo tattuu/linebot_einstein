@@ -1,7 +1,6 @@
 class LinebotController < ApplicationController
   require 'line/bot'
-  require 'tempfile'
-  
+
   protect_from_forgery :except => [:callback]
 
   def client
@@ -35,10 +34,15 @@ class LinebotController < ApplicationController
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
-          message = {
-            type: 'image',
+=begin          message = {
+            type: "image",
             originalContentUrl: tf.path,
             previewImageUrl: tf.path
+          }
+=end
+          message = {
+            type: 'text',
+            text: tf.read
           }
           client.reply_message(event['replyToken'], message)
         end

@@ -14,7 +14,7 @@ class EinsteinVisionController < ApplicationController
 
         # Read the private key string as Ruby RSA private key
         rsa_private = OpenSSL::PKey::RSA.new(private_key)
-=begin
+
         # Build the JWT payload
         payload = {
                 :sub => subject,
@@ -25,7 +25,7 @@ class EinsteinVisionController < ApplicationController
         # Sign the JWT payload
         assertion = JWT.encode payload, rsa_private, 'RS256'
         puts assertion
-
+=begin
         # Call the OAuth endpoint to generate a token
         response = RestClient.post(ps_endpoint + 'v2/oauth2/token', {
                 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',

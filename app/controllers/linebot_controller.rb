@@ -36,7 +36,7 @@ class LinebotController < ApplicationController
           tf.write(response.body)
           message = {
             type: 'image',
-            originalContentUrl: tf.path
+            originalContentUrl: tf.path,
             previewImageUrl: tf.path
           }
           client.reply_message(event['replyToken'], message)

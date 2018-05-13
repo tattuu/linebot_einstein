@@ -33,7 +33,7 @@ class LinebotController < ApplicationController
           response = client.get_message_content(event.message['id'])
           tf = Tempfile.open("content")
           tf.write(response.body)
-          client.reply_message(event['replyToken'], tf)
+          client.reply_message(event['replyToken'], tf.read)
         end
       end
     }

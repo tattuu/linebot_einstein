@@ -21,7 +21,7 @@ class EinsteinVisionController < ApplicationController
                 :aud => "https://api.einstein.ai/v2/oauth2/token",
                 :exp => expiry
             }
-
+=begin
         # Sign the JWT payload
         assertion = JWT.encode payload, rsa_private, 'RS256'
         @msg4 = assertion
@@ -38,6 +38,6 @@ class EinsteinVisionController < ApplicationController
 
         access_token = token_json["access_token"]
         @msg3 = access_token
-
+=end
     end
 end

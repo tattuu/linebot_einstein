@@ -1,6 +1,7 @@
 class LinebotController < ApplicationController
   require 'line/bot'
-
+  require 'tempfile'
+  
   protect_from_forgery :except => [:callback]
 
   def client

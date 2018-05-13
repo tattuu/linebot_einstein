@@ -34,16 +34,13 @@ class LinebotController < ApplicationController
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
-=begin          message = {
-            type: "image",
-            originalContentUrl: tf.path,
-            previewImageUrl: tf.path
-          }
-=end
+          
           message = {
-            type: 'text',
-            text: tf.path
+            type: "image",
+            originalContentUrl: # https形式のファイルパスを書かなければいけない！,
+            previewImageUrl: # https形式のファイルパスを書かなければいけない！
           }
+
           client.reply_message(event['replyToken'], message)
         end
       end

@@ -29,13 +29,15 @@ class LinebotController < ApplicationController
             text: event.message['text']
           }
           client.reply_message(event['replyToken'], message)
-        when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
-          response = client.get_message_content(event.message['id'])
-          tf = Tempfile.open("content")
-          tf.write(response.body)
-          client.reply_message(event['replyToken'], event.message['id'])
-          client.reply_message(event['replyToken'], responce)
-          client.reply_message(event['replyToken'], responce.body)
+        when Line::Bot::Event::MessageType::Image
+          message = {
+            type: "image",
+            originalContentUrl: event.message['originalContentUrl']
+            previewImageUrl: event.message['previewImageUrl']
+          }
+          client.reply_message(event['replyToken'], message)
+          client.reply_message(event['replyToken'], message[originalContentUrl])
+          client.reply_message(event['replyToken'], message[previewImageUrl])
         end
       end
     }

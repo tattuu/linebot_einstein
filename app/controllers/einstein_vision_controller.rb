@@ -5,7 +5,7 @@ class EinsteinVisionController < ApplicationController
     require 'json'
 
     def auth
-=begin
+
         ps_endpoint = ENV['EINSTEIN_VISION_URL']
         subject = ENV['EINSTEIN_VISION_ACCOUNT_ID']
         private_key = String.new(ENV['EINSTEIN_VISION_PRIVATE_KEY'])
@@ -14,7 +14,7 @@ class EinsteinVisionController < ApplicationController
 
         # Read the private key string as Ruby RSA private key
         rsa_private = OpenSSL::PKey::RSA.new(private_key)
-
+=begin
         # Build the JWT payload
         payload = {
                 :sub => subject,

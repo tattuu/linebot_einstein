@@ -1,6 +1,8 @@
 class LinebotController < ApplicationController
- require 'sinatra'
+  require 'sinatra'
   require 'line/bot'
+
+  protect_from_forgery :except => [:callback]
 
   def client
     @client ||= Line::Bot::Client.new { |config|
@@ -9,7 +11,7 @@ class LinebotController < ApplicationController
     }
   end
 
-  post '/callback' do
+  def callback
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']

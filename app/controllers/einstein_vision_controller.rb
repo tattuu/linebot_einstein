@@ -5,6 +5,7 @@ class EinsteinVisionController < ApplicationController
     require 'json'
 
     def auth
+=begin
         ps_endpoint = ENV['EINSTEIN_VISION_URL']
         subject = ENV['EINSTEIN_VISION_ACCOUNT_ID']
         private_key = String.new(ENV['EINSTEIN_VISION_PRIVATE_KEY'])
@@ -37,5 +38,6 @@ class EinsteinVisionController < ApplicationController
 
         access_token = token_json["access_token"]
         @msg3 = access_token
+=end
     end
 end

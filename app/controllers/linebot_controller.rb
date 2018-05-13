@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
 =end
           message = {
             type: 'text',
-            text: tf
+            text: tf.path
           }
           client.reply_message(event['replyToken'], message)
         end

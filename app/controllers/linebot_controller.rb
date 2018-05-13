@@ -35,5 +35,5 @@ post '/callback' do
     end
   }
 
-  "OK"
+  head :ok
 end

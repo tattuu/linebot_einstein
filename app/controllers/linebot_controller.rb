@@ -29,6 +29,7 @@ class LinebotController < ApplicationController
             text: event.message['text']
           }
           client.reply_message(event['replyToken'], message)
+=begin
         when Line::Bot::Event::MessageType::Image
           message = {
             type: "image",
@@ -38,6 +39,7 @@ class LinebotController < ApplicationController
           client.reply_message(event['replyToken'], message)
           client.reply_message(event['replyToken'], message[originalContentUrl])
           client.reply_message(event['replyToken'], message[previewImageUrl])
+=end
         end
       end
     }

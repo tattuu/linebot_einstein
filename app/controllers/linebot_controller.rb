@@ -1,5 +1,4 @@
 class LinebotController < ApplicationController
-  require 'sinatra'
   require 'line/bot'
 
   protect_from_forgery :except => [:callback]

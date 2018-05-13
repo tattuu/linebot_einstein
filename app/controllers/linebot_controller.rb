@@ -32,8 +32,14 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video then
           response = client.get_message_content(event.message['id'])
           tf = Tempfile.open("content")
+          tf.binmode
           tf.write(response.body)
-          client.reply_message(event['replyToken'], tf.read)
+          message = {
+            type: 'image',
+            originalContentUrl: tf.path
+            previewImageUrl: tf.path
+          }
+          client.reply_message(event['replyToken'], message)
         end
       end
     }

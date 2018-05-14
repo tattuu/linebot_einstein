@@ -32,11 +32,11 @@ class EinsteinVisionController < ApplicationController
             })
 
         token_json = JSON.parse(response)
-        @msg4 = "\nGenerated access token:\n"
-        @msg2 = JSON.pretty_generate(token_json)
+        @msg2 = "\nGenerated access token:\n"
+        @msg3 = JSON.pretty_generate(token_json)
 
         access_token = token_json["access_token"]
-        @msg3 = access_token
+        @msg4 = access_token
 
     end
 end

@@ -34,19 +34,17 @@ class LinebotController < ApplicationController
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
-        
+=begin        
           get_image(tf.path)
-=begin
           message = {
             type: "image",
             originalContentUrl: "https://" + tr.path
-#            https://tattuu.github.io/line_img.io/
             previewImageUrl: 
           }
           client.reply_message(event['replyToken'], message)
-=end
         end
       end
+=end
     }
     head :ok
   end
@@ -55,7 +53,6 @@ class LinebotController < ApplicationController
     open("/app/images/#{File.basename(url)}", 'wb') do |file|
       file.puts(Net::HTTP.get_response(URI.parse(url)).body)
     end
-    @msg5 = "/app/images/#{File.basename(url)}"
+    "/app/images/#{File.basename(url)}"
   end
-
 end

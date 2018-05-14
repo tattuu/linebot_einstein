@@ -25,12 +25,12 @@ class EinsteinVisionController < ApplicationController
         # Sign the JWT payload
         assertion = JWT.encode payload, rsa_private, 'RS256'
         @msg1 = ps_endpoint
-        # Call the OAuth endpoint to generate a token
+=begin        # Call the OAuth endpoint to generate a token
         response = RestClient.post(ps_endpoint + 'v2/oauth2/token', {
                 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
                 assertion: assertion
             })
-=begin
+
         token_json = JSON.parse(response)
         @msg1 = "\nGenerated access token:\n"
         @msg2 = JSON.pretty_generate(token_json)

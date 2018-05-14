@@ -50,9 +50,9 @@ class LinebotController < ApplicationController
   end
 
   def get_image(url)
-    open("/app/images/#{File.basename(url)}", 'wb') do |file|
+    open("/img/#{File.basename(url)}", 'wb') do |file|
       file.puts(Net::HTTP.get_response(URI.parse(url)).body)
     end
-    "/app/images/#{File.basename(url)}"
+    "/img/#{File.basename(url)}"
   end
 end

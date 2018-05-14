@@ -55,6 +55,7 @@ class LinebotController < ApplicationController
     open("/app/images/#{File.basename(url)}", 'wb') do |file|
       file.puts(Net::HTTP.get_response(URI.parse(url)).body)
     end
+    @msg5 = "/app/images/#{File.basename(url)}"
   end
 
 end

@@ -34,25 +34,20 @@ class LinebotController < ApplicationController
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
-=begin        
-          get_image(tf.path)
+          
+          File.open("/images/store.jpg","wb") do |file|
+            file.puts tf.read
+          end
+
           message = {
             type: "image",
-            originalContentUrl: "https://" + tr.path
-            previewImageUrl: 
+            originalContentUrl: "https://really-linebot.herokuapp.com/images/store.jpg",
+            previewImageUrl: "https://really-linebot.herokuapp.com/images/store.jpg"
           }
           client.reply_message(event['replyToken'], message)
-=end
         end
       end
     }
     head :ok
-  end
-
-  def get_image(url)
-    open("/img/#{File.basename(url)}", 'wb') do |file|
-      file.puts(Net::HTTP.get_response(URI.parse(url)).body)
-    end
-    "/img/#{File.basename(url)}"
   end
 end

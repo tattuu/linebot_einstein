@@ -30,13 +30,13 @@ class EinsteinVisionController < ApplicationController
                 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
                 assertion: assertion
             })
-=begin
+
         token_json = JSON.parse(response)
-        @msg1 = "\nGenerated access token:\n"
+        @msg4 = "\nGenerated access token:\n"
         @msg2 = JSON.pretty_generate(token_json)
 
         access_token = token_json["access_token"]
         @msg3 = access_token
-=end
+
     end
 end

@@ -34,18 +34,28 @@ class LinebotController < ApplicationController
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
+        
+          get_image(tf.path)
 =begin
           message = {
             type: "image",
-            originalContentUrl: # https形式のファイルパスを書かなければいけない！,
-            previewImageUrl: # https形式のファイルパスを書かなければいけない！
+            originalContentUrl: "https://" + tr.path
+#            https://tattuu.github.io/line_img.io/
+            previewImageUrl: 
           }
-=end
           client.reply_message(event['replyToken'], message)
         end
+=end
       end
     }
 
     head :ok
   end
+
+  def get_image(url)
+    open("/app/images/#{File.basename(url)}", 'wb') do |file|
+      file.puts(Net::HTTP.get_response(URI.parse(url)).body)
+    end
+  end
+
 end

@@ -37,7 +37,7 @@ class LinebotController < ApplicationController
           tf.write(response.body)
           tf.open
           File.open("#{Rails.root}/public/images/store.jpg","wb") do |file|
-            FIle.chmod(0777, "#{Rails.root}/public/images/store.jpg")
+            File.chmod(0777, "#{Rails.root}/public/images/store.jpg")
             file.write(tf.read)
             file.close
           end

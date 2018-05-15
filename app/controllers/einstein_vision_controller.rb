@@ -40,9 +40,9 @@ class EinsteinVisionController < ApplicationController
 
         response = JSON.parse(
             RestClient.post('https://api.metamind.io/v1/vision/predict',
-                    {:sampleLocation => "http://dgicdplf3pvka.cloudfront.net/images/dogbreeds/large/Siberian-Husky.jpg",
+                    {:sampleLocation => "https://really-linebot.herokuapp.com/images/store.jpg",
                      :modelId => model_id, :multipart => true},
                     headers = {:authorization=> "Bearer #{access_token}"}))
-        @msg4 = "Bearer #{access_token}"
+        @msg4 = response
     end
 end

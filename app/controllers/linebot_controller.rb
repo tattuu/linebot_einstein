@@ -47,10 +47,10 @@ class LinebotController < ApplicationController
             previewImageUrl: "https://really-linebot.herokuapp.com/images/store.jpg"
           }
           client.reply_message(event['replyToken'], message)
+          File.delete("#{Rails.root}/public/images/store.jpg")
         end
       end
     }
-    File.delete("#{Rails.root}/public/images/store.jpg")
     head :ok
   end
 end

@@ -45,6 +45,6 @@ class EinsteinVisionController < ApplicationController
                      :modelId => model_id, :multipart => true},
                     headers = {:authorization=> "Bearer #{access_token}"}))
         result = Result.new(content: JSON.pretty_generate(response))
-        post.save
+        result.save
     end
 end

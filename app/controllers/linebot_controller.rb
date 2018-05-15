@@ -33,11 +33,11 @@ class LinebotController < ApplicationController
           response = client.get_message_content(event.message['id'])
 
           tf = Tempfile.open("content")
-          tf.binmode
+#           tf.binmode
           tf.write(response.body)
           
-          File.open("#{Rails.root}/public/images/store.jpg","w") do |file|
-            file.puts tf.read
+          File.open("#{Rails.root}/public/images/store.jpg","wb") do |file|
+            file.write(tf.read)
             file.close
           end
 

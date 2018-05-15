@@ -36,14 +36,9 @@ class LinebotController < ApplicationController
           tf.binmode
           tf.write(response.body)
           
-          File.open("#{Rails.root}/public/images/store.jpg","wb") do |file|
+          File.open("#{Rails.root}/public/images/store.jpg","w") do |file|
             file.puts tf.read
             file.close
-            message = {
-              type: 'text',
-              text: "a"
-            }
-            client.reply_message(event['replyToken'], message)
           end
 
           message = {

@@ -37,12 +37,16 @@ class EinsteinVisionController < ApplicationController
 
         access_token = token_json["access_token"]
 =begin
-        response = RestClient.post('https://api.einstein.ai/v1/vision/predict',
+        response = RestClient.post('https://api.metamind.io/v1/vision/predict',
                     {:sampleLocation => "#{Rails.root}/public/images/store.jpg",
                      :modelId => "GQKHOUMBPNLK6ANVKJMONAEXWQ", :multipart => true},
-                    headers = {:authorization=> "Bearer " + access_token})
+                    headers = {:authorization=> "Bearer" + access_token})
 
-        @msg4 = response
+                   RestClient.post('https://api.metamind.io/v1/vision/predict',
+                    {:sampleLocation => "#{Rails.root}/public/images/store.jpg",
+                     :modelId => "GQKHOUMBPNLK6ANVKJMONAEXWQ", :multipart => true},
+                    headers = {:authorization=> "Bearer" + access_token)
 =end
-    end
+        @msg4 = "Bearer " + access_token
+    end""
 end

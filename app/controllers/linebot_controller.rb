@@ -36,7 +36,8 @@ class LinebotController < ApplicationController
           tf.binmode
           tf.write(response.body)
           tf.open
-          File.open("#{Rails.root}/public/images/store.jpg","wb+") do |file|
+          File.open("#{Rails.root}/public/images/store.jpg","wb") do |file|
+            FIle.chmod(0777, "#{Rails.root}/public/images/store.jpg")
             file.write(tf.read)
             file.close
           end
@@ -47,10 +48,10 @@ class LinebotController < ApplicationController
             previewImageUrl: "https://really-linebot.herokuapp.com/images/store.jpg"
           }
           client.reply_message(event['replyToken'], message)
+          File.delete("#{Rails.root}/public/images/store.jpg")
         end
       end
     }
-    File.delete("#{Rails.root}/public/images/store.jpg")
     head :ok
   end
 end

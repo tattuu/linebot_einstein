@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
             file.close
           end
 
-          system(https://really-linebot.herokuapp.com/einstein) # 一時的な処理(後で修正する)
+          system("curl https://really-linebot.herokuapp.com/einstein") # 一時的な処理(後で修正する)
 
           @result = Result.first
 

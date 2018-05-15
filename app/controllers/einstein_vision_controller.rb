@@ -37,13 +37,12 @@ class EinsteinVisionController < ApplicationController
         @msg3 = JSON.pretty_generate(token_json)
 
         access_token = token_json["access_token"]
-=begin
+
         response = JSON.parse(
-            RestClient.post('https://api.einstein.ai/v2/vision/predict',
+            RestClient.post('https://api.einstein.ai/v1/vision/predict',
                     {:sampleLocation => "#{Rails.root}/public/images/store.jpg",
                      :modelId => model_id, :multipart => true},
                     headers = {:authorization=> "Bearer #{access_token}"}))
-=end
         @msg4 = "Bearer #{access_token}"
     end
 end

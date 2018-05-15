@@ -43,6 +43,6 @@ class EinsteinVisionController < ApplicationController
                     {:sampleLocation => "https://really-linebot.herokuapp.com/images/store.jpg",
                      :modelId => model_id, :multipart => true},
                     headers = {:authorization=> "Bearer #{access_token}"}))
-        @msg4 = JSON.pretty_generate(response)
+        params[:result] = JSON.pretty_generate(response)
     end
 end

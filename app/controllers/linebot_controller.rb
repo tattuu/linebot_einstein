@@ -42,12 +42,22 @@ class LinebotController < ApplicationController
             file.close
           end
 
+          render 'linebot/auth'
+
+          message = {
+            type: 'text',
+            text: params[:result]
+          }
+          client.reply_message(event['replyToken'], message)
+
+=begin
           message = {
             type: "image",
             originalContentUrl: "https://really-linebot.herokuapp.com/images/store.jpg",
             previewImageUrl: "https://really-linebot.herokuapp.com/images/store.jpg"
           }
           client.reply_message(event['replyToken'], message)
+=end
         end
       end
     }

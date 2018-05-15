@@ -44,11 +44,11 @@ class LinebotController < ApplicationController
 
           render('einstein_vision/auth')
 
-          @result = Result.all
+          @result = Result.first
 
           message = {
             type: 'text',
-            text: @result.content[0]
+            text: @result.content
           }
           client.reply_message(event['replyToken'], message)
 

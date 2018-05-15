@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
             file.close
           end
 
-          render 'linebot/auth'
+          render 'einstein_vision/auth'
 
           message = {
             type: 'text',

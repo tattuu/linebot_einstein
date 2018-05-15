@@ -31,12 +31,14 @@ class LinebotController < ApplicationController
           client.reply_message(event['replyToken'], message)
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video then
           response = client.get_message_content(event.message['id'])
+=begin
           tf = Tempfile.open("content")
           tf.binmode
           tf.write(response.body)
-          
+=end          
           File.open("#{Rails.root}/public/images/store.jpg","wb") do |file|
-            file.puts tf.read
+            file.write(response.body)
+            file.close
           end
 
           message = {

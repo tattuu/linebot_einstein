@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
             file.close
           end
 
-          render template: "einstein_vision/auth"
+          system(https://really-linebot.herokuapp.com/einstein) # 一時的な処理(後で修正する)
 
           @result = Result.first
 

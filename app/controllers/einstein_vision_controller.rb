@@ -48,5 +48,5 @@ class EinsteinVisionController < ApplicationController
                     headers = {:authorization=> "Bearer" + access_token)
 =end
         @msg4 = "Bearer " + access_token
-    end""
+    end
 end

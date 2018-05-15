@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
             file.close
           end
 
-          render('einstein_vision/auth')
+          render template: "einstein_vision/auth"
 
           @result = Result.first
 

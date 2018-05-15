@@ -50,6 +50,7 @@ class LinebotController < ApplicationController
         end
       end
     }
+    File.delete("#{Rails.root}/public/images/store.jpg")
     head :ok
   end
 end

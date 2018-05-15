@@ -7,6 +7,7 @@ class EinsteinVisionController < ApplicationController
     def auth
         ps_endpoint = ENV['EINSTEIN_VISION_URL']
         subject = ENV['EINSTEIN_VISION_ACCOUNT_ID']
+        model_id = ENV['CUSTOM_MODEL_ID']
         private_key = String.new(ENV['EINSTEIN_VISION_PRIVATE_KEY'])
 
         private_key.gsub!('\n', "\n")
@@ -40,7 +41,7 @@ class EinsteinVisionController < ApplicationController
         response = JSON.parse(
             RestClient.post('https://api.einstein.ai/v2/vision/predict',
                     {:sampleLocation => "#{Rails.root}/public/images/store.jpg",
-                     :modelId => "GQKHOUMBPNLK6ANVKJMONAEXWQ", :multipart => true},
+                     :modelId => model_id, :multipart => true},
                     headers = {:authorization=> "Bearer #{access_token}"}))
 
         @msg4 = "Bearer #{access_token}"
